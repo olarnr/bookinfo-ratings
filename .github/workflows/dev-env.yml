@@ -46,6 +46,6 @@ jobs:
                 "COMMIT_SHA": "${{ github.sha }}"
               }
             }
-      - name: check deployment
-        run: curl http://bookinfo.dev.opsta.net/student167/ratings/health | grep "Ratings is working"
-        run: test $? = 0 && echo "The rating app is running correctly" || echo "There is a problem with rating app" 
+      # check deployment
+      - run: curl http://bookinfo.dev.opsta.net/student167/ratings/health | grep "Ratings is working"
+      - run: test $? = 0 && echo "The rating app is running correctly" || echo "There is a problem with rating app" 
