@@ -51,6 +51,10 @@ jobs:
                 "COMMIT_SHA": "${{ github.sha }}"
               }
             }
-      # check deployment
-      - run: curl http://bookinfo.${{ env.ENV_NAME }}.opsta.net/student167/ratings/health 
+  # check deployment
+  test:
+    needs: deploy
+    runs-on: ubuntu-20.04
+    steps:
+      - run: curl http://bookinfo.${{ env.ENV_NAME }}.opsta.net/student167/ratings/health | grep "Ratings is working"
       - run: test $? = 0 && echo "The rating app is running correctly" || echo "There is a problem with rating app" 
