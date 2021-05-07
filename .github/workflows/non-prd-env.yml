@@ -52,5 +52,5 @@ jobs:
               }
             }
       # check deployment
-      - run: curl http://bookinfo.${{ env.ENV_NAME }}.opsta.net/student167/ratings/health | grep "Ratings is working"
+      - run: curl http://bookinfo.${{ env.ENV_NAME }}.opsta.net/student167/ratings/health 
       - run: test $? = 0 && echo "The rating app is running correctly" || echo "There is a problem with rating app" 
